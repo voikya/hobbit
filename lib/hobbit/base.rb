@@ -1,4 +1,5 @@
 require 'forwardable'
+require 'uri'
 
 module Hobbit
   class Base
@@ -83,7 +84,7 @@ module Hobbit
       if route
         $~.captures.each_with_index do |value, index|
           param = route[:extra_params][index]
-          request.params[param] = value
+          request.params[param] = URI.decode_www_form_component(value)
         end
       end
 

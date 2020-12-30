@@ -1,4 +1,4 @@
-require 'helper'
+require_relative 'helper'
 
 scope Hobbit::Base do
   setup do
@@ -203,6 +203,14 @@ scope Hobbit::Base do
           send verb.downcase, '/not/found'
           assert last_response.not_found?
           assert_equal '', last_response.body
+        end
+      end
+
+      scope 'extracting extra parameters from URI' do
+        test 'it unescapes URI-encoded extra parameters' do
+          send verb.downcase, '/escaped%20value'
+          assert last_response.ok?
+          assert_equal 'escaped value', last_response.body
         end
       end
     end

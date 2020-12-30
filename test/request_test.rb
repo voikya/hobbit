@@ -1,4 +1,4 @@
-require 'helper'
+require_relative 'helper'
 
 scope Hobbit::Request do
   scope '#initialize' do

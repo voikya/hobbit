@@ -1,4 +1,4 @@
-require 'helper'
+require_relative 'helper'
 
 scope Hobbit::VERSION do
   test "it's defined" do
